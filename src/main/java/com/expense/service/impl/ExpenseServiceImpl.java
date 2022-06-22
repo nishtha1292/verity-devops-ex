@@ -19,11 +19,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	Logger log = Logger.getLogger(ExpenseController.class.getName());
 
-	UserRepository userRepository;
 	@Autowired
 	private ExpenseRepository expenseRepository;
 
 	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	public Expense saveExpense(Expense expense) {
@@ -54,7 +54,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 	@Override
 	public void deleteById(Long expenseId) {
 		//Buggy Code(ExpenseControllerTest.testDeleteExpense())
-// 		log.info("Debug delete");
+		log.info("Debug delete");
 		
 		//Correct Code
 		expenseRepository.deleteById(expenseId);
