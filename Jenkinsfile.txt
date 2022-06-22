@@ -5,8 +5,6 @@ pipeline {
 		
 		// ******ALL CODE TO BE ADDED BELOW THIS COMMENT******
 		
-			
-			
 		//Code starts for stage Clean
         stage('Clean') {
             steps {
@@ -14,7 +12,15 @@ pipeline {
             }
         }
 		//Code ends for stage Clean
-	
+		
+		
+		//Code starts for stage PMD
+		stage('PMD') {
+            steps {
+                sh 'mvn site'
+            }
+        }
+		//Code ends for stage PMD
 		
 		
 		//Code starts for stage Compile
@@ -24,6 +30,7 @@ pipeline {
             }
         }
 		//Code ends for stage Compile
+		
 		
 		//Code starts for stage Unit Test
         stage('Unit Test') {
@@ -77,7 +84,7 @@ pipeline {
 		stage('API Test') {
             steps {
 				//Change git url below as per your forked github repository URL
-				git url: 'https://github.com/nishtha1292/EMAPITests-ex.git'
+				git url: 'https://github.com/JeeKayPee/EMAPITests-ex.git'
             	sh 'mvn -Dtest=ExpenseManagerAPITest test'
             }
         }
@@ -99,11 +106,12 @@ pipeline {
 		stage('BDD Test') {
             steps {
 				//Change git url below as per your forked github repository URL
-				git url: 'https://github.com/nishtha1292/EMSystemTests_BDD.git'
+				git url: 'https://github.com/JeeKayPee/EMSystemTests_BDD.git'
             	sh 'mvn -Dtest=TestRunner test'
             }
         }
 		//Code ends for stage BDD Test	
+	
 	
 		// ******ALL CODE TO BE ADDED ABOVE THIS COMMENT******
     }
